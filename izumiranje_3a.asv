@@ -2,10 +2,10 @@
 format long
 
 gama = 2;     % broj semena koje proizvede biljka
-sigma = 0.8;  % procenat semenja koji prezivi zimu od proizvedenih
+delta = 0.8;  % procenat semenja koji prezivi zimu od proizvedenih
 
 % naredna dva parametra cemo da stelujemo
-alpha = 0.5;    % procenat proklijalih semenja u 1. sezoni od prezivelih(gama*sigma)
+alpha = 0.5;    % procenat proklijalih semenja u 1. sezoni od prezivelih(gama*delta)
 beta = 0.2;     % procenat dvogodisnjeg semenja koje je proklijalo u 2. sezoni 
 
 izumrla_vrsta = false; % bool vrednost koja ce nam pokazati da li je vrsta izumrla
@@ -16,7 +16,7 @@ n_pocetno=n;
 
 while ~izumrla_vrsta && alpha >= 0 
     for i = 1:20
-        n = n * (alpha * gama * sigma) + n_preth * (beta*sigma*sigma*gama * (1 - alpha));
+        n = n * (alpha * gama * delta) + n_preth * (beta*delta * (gama * delta - alpha * gama * delta) );
 
         if i==1
             prirastaj=n-n_pocetno
@@ -67,7 +67,7 @@ if izumrla_vrsta
     data = zeros(21, 2);
     data(1,:) = [1,n];
     for i = 2:21
-        n = n * (alpha * gama * sigma) + n_preth * (beta*sigma*sigma*gama * (1 - alpha));
+        n = n * (alpha * gama * delta) + n_preth * (beta*delta*delta * (1 - alpha * ga) );
 
         n_preth = n;
 

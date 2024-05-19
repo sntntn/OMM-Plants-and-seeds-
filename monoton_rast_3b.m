@@ -2,10 +2,10 @@
 format long
 
 gama = 2;     % broj semena koje proizvede biljka
-delta = 0.8;  % procenat semenja koji prezivi zimu od proizvedenih
+sigma = 0.8;  % procenat semenja koji prezivi zimu od proizvedenih
 
 % naredna dva parametra cemo da stelujemo
-alpha = 0.5;    % procenat proklijalih semenja u 1. sezoni od prezivelih(gama*delta)
+alpha = 0.5;    % procenat proklijalih semenja u 1. sezoni od prezivelih(gama*sigma)
 beta = 0.4;     % procenat dvogodisnjeg semenja koje je proklijalo u 2. sezoni 
 
 monoton_rast = false; % bool vrednost koja ce nam pokazati da li je vrsta ostvarila monoton rast
@@ -17,7 +17,7 @@ n_pocetno=n;
 while ~monoton_rast && alpha <= 1
     ima_pad = false;
     for i = 1:20
-        n = n * (alpha * gama * delta) + n_preth * (beta*delta * (gama * delta - alpha * gama * delta) );
+        n = n * (alpha * gama * sigma) + n_preth * (beta*sigma*sigma*gama * (1 - alpha));
 
         if i==1
             prirastaj=n-n_pocetno
@@ -69,7 +69,7 @@ if monoton_rast
     data = zeros(21, 2);
     data(1,:) = [1,n];
     for i = 2:21
-        n = n * (alpha * gama * delta) + n_preth * (beta*delta * (gama * delta - alpha * gama * delta) );
+        n = n * (alpha * gama * sigma) + n_preth * (beta*sigma*sigma*gama * (1 - alpha));
 
         n_preth = n;
 
