@@ -17,7 +17,7 @@ n_pocetno=n;
 while ~monoton_rast && alpha <= 1
     ima_pad = false;
     for i = 1:20
-        n = n * (alpha * gama * delta) + n_preth * (beta * (gama * delta - alpha * gama * delta) );
+        n = n * (alpha * gama * delta) + n_preth * (beta*delta * (gama * delta - alpha * gama * delta) );
 
         if i==1
             prirastaj=n-n_pocetno
@@ -48,7 +48,7 @@ while ~monoton_rast && alpha <= 1
         break; % Izlazak iz spoljne petlje ako je vrsta ostvarila monoton rast
     end
 
-    % Smanjivanje alpha i resetovanje n i n_preth za sledeću iteraciju
+    % Smanjivanje alpha i resetovanje n i n_preth za sledeu iteraciju
     alpha = alpha + 0.05;
     n = 100;
     n_preth = 0;
@@ -56,7 +56,7 @@ while ~monoton_rast && alpha <= 1
 end
 
 if ~monoton_rast
-    disp('Vrsta nije ostvarila monoton rast za trenutno podešene vrednosti parametara.');
+    disp('Vrsta nije ostvarila monoton rast za trenutno podeene vrednosti parametara.');
 end
 
 
@@ -69,7 +69,7 @@ if monoton_rast
     data = zeros(21, 2);
     data(1,:) = [1,n];
     for i = 2:21
-        n = n * (alpha * gama * delta) + n_preth * (beta * (gama * delta - alpha * gama * delta) );
+        n = n * (alpha * gama * delta) + n_preth * (beta*delta * (gama * delta - alpha * gama * delta) );
 
         n_preth = n;
 

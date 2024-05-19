@@ -16,7 +16,7 @@ n_pocetno=n;
 
 while ~izumrla_vrsta && alpha >= 0 
     for i = 1:20
-        n = n * (alpha * gama * delta) + n_preth * (beta * (gama * delta - alpha * gama * delta) );
+        n = n * (alpha * gama * delta) + n_preth * (beta*delta * (gama * delta - alpha * gama * delta) );
 
         if i==1
             prirastaj=n-n_pocetno
@@ -46,7 +46,7 @@ while ~izumrla_vrsta && alpha >= 0
         break; % Izlazak iz spoljne petlje ako je vrsta izumrla
     end
 
-    % Smanjivanje alpha i resetovanje n i n_preth za sledeću iteraciju
+    % Smanjivanje alpha i resetovanje n i n_preth za sledeu iteraciju
     alpha = alpha - 0.05;
     n = 100;
     n_preth = 0;
@@ -54,7 +54,7 @@ while ~izumrla_vrsta && alpha >= 0
 end
 
 if ~izumrla_vrsta
-    disp('Vrsta nije izumrla za trenutno podešene vrednosti parametara.');
+    disp('Vrsta nije izumrla za trenutno podeene vrednosti parametara.');
 end
 
 
@@ -67,7 +67,7 @@ if izumrla_vrsta
     data = zeros(21, 2);
     data(1,:) = [1,n];
     for i = 2:21
-        n = n * (alpha * gama * delta) + n_preth * (beta * (gama * delta - alpha * gama * delta) );
+        n = n * (alpha * gama * delta) + n_preth * (beta*delta * (gama * delta - alpha * gama * delta) );
 
         n_preth = n;
 
